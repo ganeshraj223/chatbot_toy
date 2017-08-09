@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app = 'chatBot'>
+<head>
+	<title>Chat Bot</title>
+	<style type="text/css">
+		ul {
+		  	list-style-type: none;
+			}
+		li {
+		  background-color: #e3e3e3;
+		  color: #666;
+		  font-family: Arial;
+		  padding: 1px;
+		  font-size: 12px;
+		  margin: 0 1px 1px 1px;
+		  text-align: center;
+		  text-transform: uppercase;
+		}
+		.ng-enter {
+		  -webkit-transform: scale(0);
+		  -webkit-transition-property: all;
+		  -webkit-transition-timing-function: ease-out-cubic;
+		  -webkit-transition-duration: 400ms;
+		}
+
+		.ng-enter.ng-enter-active {
+		  -webkit-transform: scale(1);
+		}
+		fieldset 
+		{
+			border: 1px solid #ddd !important;
+			margin: 0;
+			xmin-width: 0;
+			padding: 10px;       	
+			position: relative;
+			border-radius:4px;
+			background-color:#f5f5f5;
+			padding-left:10px!important;
+		}	
+	
+		legend
+			{
+				font-size:14px;
+				font-weight:bold;
+				margin-bottom: 0px; 
+				width: 35%; 
+				border: 1px solid #ddd;
+				border-radius: 4px; 
+				padding: 5px 5px 5px 10px; 
+				background-color: #ffffff;
+			}
+		.btn-primary
+		{
+			border-radius: 6px;
+			margin: 5px;
+			color: white;   	
+			padding: 5px;
+			background-color: #337ab7;
+			border-color: #337ab7;
+		}
+		.containers
+		{
+			margin-left: 450px;
+		}
+		img
+		{
+			margin: -4px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" ng-controller = 'chatBotCtrl'  ng-init="banner=false"  ng-init="chatbox=false">
+		
+		<form>
+			<fieldset ng-hide="chatbox">
+			<legend>ChatBot</legend>
+				<ul>
+						<li ng-repeat = 'message in messages' style="-webkit-transition-delay:1000ms">{{message}}</li>
+					<div ng-show="myvalue">
+						<label><input type="radio" ng-model='result1' ng-value='"1"' name="magicbox">magicbox</label>
+						<label><input type="radio" ng-model='result2' ng-value='"2"' name="toolbox">toolbox</label>
+						<label><input type="radio" ng-model='result3' ng-value='"3"' name="servicebox">servicebox</label>
+					</div>
+					<div ng-show="myvalue1">
+						<label><input type="radio" ng-model='result1' ng-value='"1"' name="conceptbuilder">conceptbuilder</label>
+						<label><input type="radio" ng-model='result2' ng-value='"2"' name="designer">designer</label>
+						<label><input type="radio" ng-model='result3' ng-value='"3"' name="testing">testing</label>
+						<label><input type="radio" ng-model='result4' ng-value='"4"' name="factory">factory</label>
+					</div>
+				</ul>
+				<input id="chatmsg" type="text" name="message" placeholder="Type Your Message" ng-model="sent_message"><br><br>
+				<input type="submit" class="btn-primary" style="cursor: pointer;" name="submit" value="SEND" ng-click="func();">
+			</fieldset>
+		</form>
+		<br>
+		<a ng-show = "banner" style="cursor: pointer;" ng-click="func1()">Click here to get the banner.</a>
+		<div ng-show ="chatbox" class="containers">
+			<img src="images/header.jpg" width={{header_width}} height={{header_height}}>
+			<br>
+			<img src="images/body.jpg" width={{body_width}} height={{body_height}}>
+			<br>
+			<img src="images/footer.jpg" width={{footer_width}} height={{footer_height}}>
+		</div>
+	</div>
+	<script type="text/javascript" src = "js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-animate.js"></script>
+	<script type="text/javascript" src="controllers/controller.js"></script>
+</body>
+</html>
